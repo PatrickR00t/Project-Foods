@@ -1,38 +1,731 @@
 .App {
-  text-align: center;
+  background: #c4bdbb;
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App::-webkit-scrollbar {
+  display: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.1);
+  background: #c4b6ce;
+  padding: 5px 15px;
+  height: 70px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  position: fixed;
+}
+
+.logo {
+  width: 50px;
+  min-width: 40px;
+  border-radius: 50vh;
+}
+
+.inputBox {
+  display: flex;
+  background: #ffffff;
+  align-items: center;
+  overflow: hidden;
+  padding: 8px 15px;
+  border-radius: 25px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+  width: 120px;
+}
+
+.inputBox .searchIcon {
+  font-size: 20px;
+  color: #787a84;
+}
+
+.inputBox input {
+  background: transparent;
+  color: #787a84;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding-left: 8px;
+  border: none;
+}
+
+.shoppingCart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.shoppingCart .cart {
+  font-size: 30px;
+  color: #373848;
+}
+
+.shoppingCart .cart_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8901c;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  min-width: 20px;
+  min-height: 20px;
+  right: 0;
+  top: -8px;
+  position: absolute;
+}
+
+.shoppingCart .cart_content p {
+  font-weight: 500;
+  color: #faf9fb;
+}
+
+.shoppingCart .noCartItem {
+  display: none;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+}
+
+.profileContainer .imgBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #444;
+  overflow: hidden;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.profileContainer .imgBox img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.toggleMenu .toggleIcon {
+  font-size: 30px !important;
+  color: #373848;
+}
+
+main {
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin-top: 60px;
+}
+
+.mainContainer {
+  background: #c4bdbb;
+  padding-bottom: 100px;
+  padding: 10px;
+  width: 100%;
+  height: auto;
+}
+
+.dishContainer {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.menuCard {
+  width: 100%;
+}
+
+.subMenuContianer,
+.viewAll {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subMenuContianer h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #2a2b3c;
+}
+
+.subMenuContianer .viewAll p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #f8901c;
+}
+
+.subMenuContianer .viewAll i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8901c;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.subMenuContianer .viewAll i .MuiSvgIcon-root {
+  font-size: 16px !important;
+  color: #faf9fb;
+}
+
+.rowContainer {
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+.rowContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.rowMenuCard {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background: #d5d5d5;
+  align-items: center;
+  padding: 5px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+  width: 80px;
+  height: 100px;
+  min-width: 80px;
+  margin-right: 12px;
+  border-radius: 10px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.rowMenuCard:hover,
+.rowMenuCard.active {
+  background: #d4cec7;
+}
+
+.rowMenuCard .imgBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 100%;
+  transition: 0.5s;
+}
+
+.rowMenuCard:hover .imgBox,
+.rowMenuCard.active .imgBox {
+  background: #faf9fb;
+}
+
+.rowMenuCard .imgBox img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.rowMenuCard:hover .imgBox img,
+.rowMenuCard.active .imgBox img {
+  width: 80%;
+  height: 80%;
+  transition: 0.5s;
+}
+
+.rowMenuCard h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #f8901c;
+  transition: 0.5s;
+}
+
+.rowMenuCard:hover h3,
+.rowMenuCard.active h3 {
+  color: #faf9fb;
+}
+
+.rowMenuCard .loadMenu {
+  display: flex;
+  justify-content: center;
+  background: #e07c1ff8;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+.rowMenuCard:hover .loadMenu,
+.rowMenuCard.active .loadMenu {
+  background: #faf9fb;
+}
+
+.rowMenuCard .loadMenu .MuiSvgIcon-root {
+  font-size: 14px !important;
+  color: #faf9fb;
+}
+
+.rowMenuCard:hover .loadMenu .MuiSvgIcon-root,
+.rowMenuCard.active .loadMenu .MuiSvgIcon-root {
+  color: #f8901c;
+}
+
+.dishItemContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.itemCard {
+  display: flex;
+  justify-content: flex-end;
   flex-direction: column;
   align-items: center;
+  margin: 10px 0;
+  width: 160px;
+  height: 180px;
+  position: relative;
+}
+
+.isFavourite {
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  transition: 0.5s;
+}
+
+.isFavourite .MuiSvgIcon-root {
+  font-size: 18px;
+  color: #d2e711f5;
+}
+
+.isFavourite.active .MuiSvgIcon-root {
+  filter: drop-shadow(0px 0px 8px #eeff00);
+  color: #ffc400;
+}
+
+.itemCard .imgBox {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  position: absolute;
+  top: -10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 100vw;
 }
 
-.App-link {
-  color: #61dafb;
+.itemCard .imgBox img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.itemImg {
+  top: 0;
+  width: 60%;
+  position: absolute;
+}
+
+.itemContent {
+  background: #ffe4c4;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  width: 100%;
+  padding-top: 50px;
+  border-radius: 15px;
+}
+
+.itemContent .itemName {
+  font-size: 16px;
+}
+
+.itemContent .bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemContent .bottom .rating .MuiSvgIcon-root {
+  font-size: 14px;
+}
+
+.itemContent .bottom .price {
+  font-size: 16px;
+}
+
+.itemContent .bottom .price span {
+  font-size: 12px;
+  color: #51af59e8;
+}
+
+.itemContent .addToCart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+  background: #ff4800f8;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.itemContent .addToCart .MuiSvgIcon-root {
+  font-size: 16px;
+  color: #faf9fb;
+}
+
+.orange {
+  color: #dbb715f8 !important;
+}
+
+.gray {
+  color: #373848 !important;
+}
+
+.rightMenu {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  padding: 20px 10px;
+  width: 350px;
+  height: calc(100% - 55px);
+  right: 0;
+  top: 55px;
+  z-index: 105;
+  position: fixed;
+  transform: translateX(200%);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-top-left-radius: 10px;
+}
+
+.rightMenu.active {
+  transform: translateX(0%);
+}
+
+.debitCardContainer {
+  padding: 10px;
+  width: 100%;
+  height: auto;
+}
+
+.debitCard {
+  position: relative;
+  width: 100%;
+  height: 170px;
+  min-width: 300px;
+  min-height: 170px;
+  border-radius: 15px;
+}
+
+.debitCard::before {
+  background: #0044fff8;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  filter: blur(2px);
+  transform: rotate(5deg);
+  border-radius: 15px;
+}
+
+.debitCard::after {
+  background: linear-gradient(
+    35deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.1)
+  );
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 15px;
+}
+
+.cardGroup {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.cardLogo,
+.cardChip,
+.card_number,
+.card_name,
+.card_from,
+.card_to {
+  position: absolute;
+}
+
+.cardLogo {
+  width: 60px;
+  top: 30px;
+  right: 30px;
+  height: auto;
+}
+
+.cardChip {
+  background: #d4c671;
+  width: 40px;
+  top: 50px;
+  left: 30px;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid #d4c671;
+}
+
+.card_number,
+.card_from,
+.card_to,
+.card_name {
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.card_number {
+  left: 30px;
+  bottom: 60px;
+}
+
+.card_name {
+  font-size: 12px;
+  bottom: 30px;
+  left: 30px;
+}
+
+.card_from {
+  font-size: 12px;
+  bottom: 30px;
+  right: 90px;
+}
+
+.card_to {
+  font-size: 12px;
+  bottom: 30px;
+  right: 30px;
+}
+
+.cartContainer {
+  width: 100%;
+  flex: 1;
+  min-width: 320px;
+  padding: 0px 10px;
+  margin-top: 10px;
+}
+
+.cartItems {
+  width: 100%;
+  min-height: 280px;
+  max-height: 320px;
+  margin-top: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.cartItems::-webkit-scrollbar {
+  display: none;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.cartItem .imgBox {
+  display: flex;
+  justify-content: center;
+  background: #00ffc855;
+  align-items: center;
+  width: 60px;
+  min-width: 60px;
+  height: 60px;
+  padding: 5px;
+  min-height: 60px;
+  border-radius: 10px;
+}
+
+.cartItem .imgBox img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.cartItem .itemSection {
+  margin-left: 10px;
+}
+
+.cartItem .itemSection .itemName {
+  font-size: 16px;
+  color: #2a2b3c;
+}
+
+.cartItem .itemSection .itemQuantity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px;
+  font-size: 16px;
+  color: #2a2b3c;
+}
+
+.cartItem .itemSection .itemQuantity span {
+  color: #f8901c;
+}
+
+.cartItem .itemSection .itemQuantity .quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60px;
+  cursor: pointer;
+}
+
+.cartItem .itemSection .itemQuantity .quantity .itemRemove {
+  font-size: 24px;
+  color: #2a2b3c;
+}
+
+.cartItem .itemSection .itemQuantity .quantity .itemAdd {
+  font-size: 24px;
+  color: #2a2b3c;
+}
+
+.cartItem .itemPrice {
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: auto;
+  color: #2a2b3c;
+}
+
+.cartItem .itemPrice .dolorSign {
+  font-size: 12px;
+  color: #51af59e8;
+}
+
+.cartItem .itemPrice .itemPriceValue {
+  font-size: 16px;
+  color: #373848;
+}
+
+.totalSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 5px 8px;
+  margin: 15px 0px;
+}
+
+.totalSection h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2a2b3c;
+}
+
+.totalSection p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2a2b3c;
+}
+
+.totalSection p span {
+  font-size: 14px;
+  color: #51af59e8;
+}
+
+.checkOut {
+  background: #0044fff8;
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 100vw;
+  color: #faf9fb;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.addSomeItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+@media screen and (min-width: 650px) {
+  .rowContainer {
+    justify-content: space-between;
   }
-  to {
-    transform: rotate(360deg);
+
+  .inputBox {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .toggleMenu {
+    display: none;
+  }
+
+  .profileContainer .userName {
+    display: block;
+  }
+
+  .mainContainer {
+    width: calc(100% - 350px);
+  }
+
+  main {
+    display: flex;
+  }
+  .mainContainer {
+    padding: 10px 30px;
+  }
+  .rightMenu {
+    position: fixed;
+    z-index: 1;
+    transform: translateX(0%);
+    top: unset;
+    padding: 20px 15px;
+  }
+  .itemCard {
+    width: 180px;
+    height: 200px;
   }
 }
