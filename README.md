@@ -1,4 +1,4 @@
-# Boas vindas ao repositório do projeto de Foods!
+# Boas vindas ao repositório do projeto Foods!
 
 ## Instruções para rodar o projeto
 1. Clone o repositório
@@ -12,3 +12,4 @@
   * Inicialize o projeto:
     * `npm start` (uma nova página deve abrir no seu navegador).
     
+- [Link](https://patrickr00t-project-foods.netlify.app)
